@@ -1,5 +1,6 @@
 import 'package:cloudz/models/geocoding_api.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 import 'models/api_call.dart';
 import 'models/api_call_aqi.dart';
@@ -87,8 +88,7 @@ class _SearchCityState extends State<SearchCity> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Color.fromRGBO(12, 3, 74, 1),
-        brightness: Brightness.dark,
-        elevation: 0,
+        elevation: 0, systemOverlayStyle: SystemUiOverlayStyle.light,
       ),
       backgroundColor: Color.fromRGBO(4, 18, 41, 1),
       body: Container(

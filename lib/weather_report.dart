@@ -1,6 +1,7 @@
 import 'package:cloudz/models/api_call.dart';
 import 'package:cloudz/models/api_call_aqi.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import 'search_city.dart';
@@ -32,7 +33,6 @@ class _WeatherReportState extends State<WeatherReport> {
 
     String aqiRating = widget.airQualityIndex!.tempAqiInfo.airQualityInfo.aqi;
 
-
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Color.fromRGBO(12, 3, 74, 1),
@@ -43,13 +43,12 @@ class _WeatherReportState extends State<WeatherReport> {
         actions: [
           IconButton(
               onPressed: () {
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => SearchCity()));
+                Navigator.push(context, MaterialPageRoute(builder: (context) => SearchCity()));
               },
               icon: Icon(Icons.search))
         ],
         elevation: 0,
-        brightness: Brightness.dark,
+        systemOverlayStyle: SystemUiOverlayStyle.light,
       ),
       backgroundColor: Colors.transparent,
       body: Center(
@@ -67,7 +66,7 @@ class _WeatherReportState extends State<WeatherReport> {
                 0.8,
               ],
               colors: [
-Color(0xff100579),
+                Color(0xff100579),
                 Color(0xff0C0459),
                 Color.fromRGBO(12, 3, 74, 1),
                 Color.fromRGBO(8, 3, 56, 1),
@@ -111,8 +110,7 @@ Color(0xff100579),
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
                         Column(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-
+                          crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
                             Text(
                               '${widget.weatherResponse!.tempInfo.temperature}°C',
@@ -165,7 +163,9 @@ Color(0xff100579),
                         size: size,
                         suffix1: '° C',
                         suffix2: '° C'),
-                        SizedBox(height: 5,),
+                    SizedBox(
+                      height: 5,
+                    ),
                     DetailsCard(
                         firstItem: 'humidity',
                         secondItem: 'pressure',
@@ -174,23 +174,20 @@ Color(0xff100579),
                         size: size,
                         suffix1: '%',
                         suffix2: 'mb'),
-                        SizedBox(
+                    SizedBox(
                       height: 5,
                     ),
-
                     DetailsCard(
                         firstItem: 'visibility',
                         secondItem: 'cloud cover',
                         dataFirst: widget.weatherResponse!.visibility,
-                        dataSecond:
-                            widget.weatherResponse!.cloudsInfo.cloudCover,
+                        dataSecond: widget.weatherResponse!.cloudsInfo.cloudCover,
                         size: size,
                         suffix1: 'm',
                         suffix2: '%'),
-                        SizedBox(
+                    SizedBox(
                       height: 5,
                     ),
-
                     Container(
                       width: size.width * 0.9,
                       child: Card(
@@ -223,8 +220,7 @@ Color(0xff100579),
                                           : aqiRating == '4'
                                               ? AirQuality(value: 'Poor')
                                               : aqiRating == '5'
-                                                  ? AirQuality(
-                                                      value: 'Very poor')
+                                                  ? AirQuality(value: 'Very poor')
                                                   : Container(),
                               TextButton(
                                 onPressed: () {
@@ -244,8 +240,7 @@ Color(0xff100579),
                                           textStyle: TextStyle(
                                             fontSize: 15,
                                             fontWeight: FontWeight.w500,
-                                            color: Color.fromRGBO(
-                                                204, 204, 204, 1),
+                                            color: Color.fromRGBO(204, 204, 204, 1),
                                           ),
                                         ),
                                       ),
@@ -258,8 +253,7 @@ Color(0xff100579),
                                           textStyle: TextStyle(
                                             fontSize: 15,
                                             fontWeight: FontWeight.w500,
-                                            color: Color.fromRGBO(
-                                                204, 204, 204, 1),
+                                            color: Color.fromRGBO(204, 204, 204, 1),
                                           ),
                                         ),
                                       ),

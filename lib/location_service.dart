@@ -1,4 +1,3 @@
-import 'package:animated_splash_screen/animated_splash_screen.dart';
 import 'package:cloudz/models/api_call_aqi.dart';
 import 'package:cloudz/weather_report.dart';
 import 'package:location/location.dart';
@@ -96,11 +95,11 @@ class _LocationServiceState extends State<LocationService> {
       builder: (context) => AlertDialog(
         title: Text('Do you really want to exit the app?'),
         actions: <Widget>[
-          FlatButton(
+          TextButton(
             child: Text('No'),
             onPressed: () => Navigator.pop(context, false),
           ),
-          FlatButton(
+          TextButton(
             child: Text('Yes'),
             onPressed: () => Navigator.pop(context, true),
           ),
